@@ -16,6 +16,8 @@ public class FileUtils {
     /**
      * 分配读取文件的数组大小，尽量减少每次读取文件时都new byte[]操作
      * 如果用来读取文件流的数组大小不超过 INITIAL_CAPACITY（64KB），那么可以第一次新增后，使用threadLocal缓存起来，后续再使用
+     * 注意：threadLocal是线程共享的，同一线程连续进行两次不同的文件读取时，会出现数据异常问题
+     *
      *
      * @param length
      * @return
